@@ -63,7 +63,12 @@ const opts = {
 
     const field_sex = await client.$("id:com.example.covid19_survey_cs458:id/input_male")
     field_sex.click()
- 
+    const field_changes = await client.$("id:com.example.covid19_survey_cs458:id/input_changes")
+
+    
+    field_changes.setValue("It was difficult to breath while stepping upstairs.")
+    await load()
+    submit_button.click()
   }
   
   main();

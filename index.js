@@ -55,6 +55,11 @@ const opts = {
 
     field_city_spinner.click()
 
+    const field_select_city = await client.$("xpath://*[@text='ANTALYA']")
+    
+  
+    field_select_city.click()
+
     //submit_button = await client.$("id:com.example.survet_basic_act_nov12_junk:id/sumbit_button")
     //submit_button.click()
 

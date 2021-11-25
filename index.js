@@ -60,12 +60,10 @@ const opts = {
   
     field_select_city.click()
 
-    //submit_button = await client.$("id:com.example.survet_basic_act_nov12_junk:id/sumbit_button")
-    //submit_button.click()
 
-    //close_alert_button = await client.$("id:android:id/button3")
-    // await close_alert_button.waitForDisplayed({timeout: 10000});
-    //close_alert_button.click(); 
+    const field_sex = await client.$("id:com.example.covid19_survey_cs458:id/input_male")
+    field_sex.click()
+ 
   }
   
   main();

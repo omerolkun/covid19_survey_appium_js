@@ -51,7 +51,7 @@ const opts = {
     field_month.setValue("08")
     field_year.setValue("1990")
     await load()
-    const field_city_spinner = await client.$("id:android:id/text1")
+    const field_city_spinner = await client.$("id:com.example.covid19_survey_cs458:id/input_city")
 
     field_city_spinner.click()
 

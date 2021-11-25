@@ -18,6 +18,19 @@ const opts = {
     }
   };
   
+
+  const timer = ms => new Promise(res => setTimeout(res, ms))
+
+  async function load () { // We need to wrap the loop into an async function for this to work
+    for (var i = 0; i < 3; i++) {
+      //console.log(i);
+      await timer(3000); // then the created Promise can be awaited
+    }
+  }
+  
+
+
+
   async function main () {
     const client = await wdio.remote(opts);
   
@@ -35,9 +48,11 @@ const opts = {
     const field_month = await client.$("id:com.example.covid19_survey_cs458:id/input_birth_date2")
     const field_year = await client.$("id:com.example.covid19_survey_cs458:id/input_birth_date4")
     field_day.setValue("21")
+    await load()
     field_month.setValue("08")
+    await load()
     field_year.setValue("1990")
-
+    
     //const field_city_spinner = await client.$("id:android:id/text1")
 
     //field_city_spinner.click()

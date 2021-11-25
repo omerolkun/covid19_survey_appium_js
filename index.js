@@ -30,6 +30,17 @@ const opts = {
     alert_ok = await client.$("id:android:id/button3")
     alert_ok.click()
 
+    await field_name.setValue("seyhan karaca");
+    const field_day = await client.$("id:com.example.covid19_survey_cs458:id/input_birth_date")
+    const field_month = await client.$("id:com.example.covid19_survey_cs458:id/input_birth_date2")
+    const field_year = await client.$("id:com.example.covid19_survey_cs458:id/input_birth_date4")
+    field_day.setValue("21")
+    field_month.setValue("08")
+    field_year.setValue("1990")
+
+    //const field_city_spinner = await client.$("id:android:id/text1")
+
+    //field_city_spinner.click()
 
     //submit_button = await client.$("id:com.example.survet_basic_act_nov12_junk:id/sumbit_button")
     //submit_button.click()

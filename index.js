@@ -39,11 +39,8 @@ async function getTextOfElement(element) {
 
 const timer = ms => new Promise(res => setTimeout(res, ms))
 
-async function load () { //We need to wrap the loop into an async function for this to work
-    for (var i = 0; i < 3; i++) {
-        console.log(i);
-        await timer(3000);// then the created Promise can be awaited
-    }
+async function load (x = 1) {
+    await timer(1000*x);
 }
 
 
@@ -91,52 +88,69 @@ async function main () {
     await load()
     await submit_button.click()
     await load()
+    await alert_ok.click()
+    await load()
 
-    const mes = await client.$("id:android:id/message")
-    console.log(await getTextOfElement(mes))
+    // const mes = await client.$("id:android:id/message")
+    // var messageStr = await getTextOfElement(mes)
 
+    // console.log(messageStr)
+    // if(messageStr == 'Submission is valid')
+    //     console.log('Test 1 Passed')
+    // else
+    //     console.log('Test 1 Failed')
+
+    // await alert_ok.click()
+
+    await field_name.setValue("Ome3r olkun")
+    await submit_button.click()
+    await alert_ok.click()
+    await load()
+    await field_name.setValue("Omer A Olkun")
+    await submit_button.click()
+    await alert_ok.click()
+    await load()
+    await field_name.setValue("Omer Olkun")
+
+
+    // TEST 2
+    // FEB30 WHICH IS INVALID
+    await field_day.setValue("30")
+    await field_month.setValue("02")
+    await field_year.setValue("1990")
+    await submit_button.click()
+    await alert_ok.click()
+    await load()
+
+    await field_day.setValue("28")
+    await field_month.setValue("02")
+    await field_year.setValue("1990")
+
+    // TEST 3
+    await client.background(3);
+    await submit_button.click()
     await alert_ok.click()
 
+    // TEST 4
+    // Turn Page and check wheter data is lost
 
-    // await field_name.setValue("Ome3r olkun")
-    // await submit_button.click()
-    // await alert_ok.click()
-    // await load()
-    // await field_name.setValue("Omer Olkun")
+    await client.setOrientation('LANDSCAPE');
+    await client.setOrientation('PORTRAIT');
 
-    // // TEST 2
-    // // FEB30 WHICH IS INVALID
-    // await field_day.setValue("30")
-    // await field_month.setValue("02")
-    // await field_year.setValue("1990")
-    // await submit_button.click()
-    // await alert_ok.click()
-    // await load()
+    // TEST 5
+    await field_changes.setValue("I was always sick and I had no energy.")
 
-    // await field_day.setValue("28")
-    // await field_month.setValue("02")
-    // await field_year.setValue("1990")
+    await submit_button.click()
+    await alert_ok.click()
+    await load()
+    await field_changes.setValue("IwasalwayssickandIhadnoenergy.")
 
-    // // TEST 3
-    // await client.background(3);
-    // await submit_button.click()
-    // await alert_ok.click()
-
-    // // TEST 4
-    // // Turn Page and check wheter data is lost
-
-    // await client.setOrientation('LANDSCAPE');
-    // await client.setOrientation('PORTRAIT');
-    // console.log("OK")
-
-    // await load()
-    // await client.tapElement(submit_button)
-
-
-    // let action = new wd.TouchAction();
-    // await action.tap({el: element});
-    // await action.perform();
-
+    for (let i = 0; i < 5; i++)
+    {
+        await submit_button.click()
+        await alert_ok.click()
+        await load()
+    }
   }
 
   main();
